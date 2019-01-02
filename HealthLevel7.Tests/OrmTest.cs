@@ -47,7 +47,7 @@ namespace HealthLevel7.Tests
         }
 
         [TestMethod]
-        public void ObservationRequest()
+        public void OBR_ObservationRequest()
         {
             var segmentText = @"OBR|1|2156286|A140875|MRSHLR-C^MR Shoulder right wo/contrast||| 20060220141000|||||";
             var segment = new OBR();
@@ -56,6 +56,24 @@ namespace HealthLevel7.Tests
             Assert.IsTrue(result.UniversalServiceID == "MRSHLR-C^MR Shoulder right wo/contrast");
         }
 
+        [TestMethod]
+        public void ORC_CommonOrder()
+        {
+            var segmentText = @"ORC|NW|987654^EPIC|76543^EPC||Final||^^^20140418170014^^^^||20140418173314|1148^PATTERSON^JAMES^^^^||1173^MATTHEWS^JAMES^A^^^|1133^^^222^^^^^|(618)222-1122||";
+            var segment = new ORC();
+            var result = segment.GetSegment(segmentText);
 
+            Assert.IsTrue(result.OrderControl == "NW");
+        }
+
+        [TestMethod]
+        public void Diagnosis()
+        {
+            var segmentText = @"DG1||I10|S82^ANKLE FRACTURE^I10|ANKLE FRACTURE||";
+            var segment = new DG1();
+            var result = segment.GetSegment(segmentText);
+
+            Assert.IsTrue(result.DiagnosisCodingMethod == "I10");
+        }
     }
 }
