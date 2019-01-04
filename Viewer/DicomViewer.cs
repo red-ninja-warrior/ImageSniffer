@@ -10,7 +10,7 @@ namespace DicomFileViewer
     {
         public DicomViewer()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -27,64 +27,32 @@ namespace DicomFileViewer
                 {
                     var filePath = ofd.FileName;
                     txtFilePath.Text = ofd.FileName;
-                    var dicomFileInfo = GetDicomFileInfo(filePath);
+                    gvTags.DataSource = GetDicomTags(filePath);
+                    gvTags.AutoResizeColumns();
                 }
             }
         }
-
-        private IEnumerable<string> GetDicomFileInfo(string path)
+        
+        private IEnumerable<DicomTag> GetDicomTags(string path)
         {
             var file = DicomFile.Open(path);
-            var patientIds = file.Dataset.GetValues<string>(DicomTag.PatientID);
-            return patientIds;
-        }
+            var value = string.Empty;
 
-        /*
-        /// <summary>
-        /// Gets and prints information about DICOM file.
-        /// </summary>
-        /// <param name="filePath">Path to a DICOm file.</param>
-        private List<DicomDataElementMetadata> GetDicomFileInfo(string filePath)
-        {
-            var dicomFileInfo = new List<DicomDataElementMetadata>();
-
-            // open DICOM file
-            using (var file = new DicomFile(filePath, true))
-            {
-                // show file name and page count
-                Console.WriteLine($@"File: {Path.GetFileName(filePath)} Page count: {file.Pages.Count}");
-                
-                // get DICOM file metadata
-                var fileMetadata = new DicomFrameMetadata(file);
-
-                // for each metadata node
-                foreach (var children in fileMetadata)
+            var tags = file.Dataset
+                .Where(x => x.ValueRepresentation != null && x.ValueRepresentation.IsString)
+                .Select(x => new DicomTag
                 {
-                    dicomFileInfo.Add(GetMetadataNodeInfo(children));
-                }
-            }
+                    Tag = x.ToString(),
+                    Name = x.Tag.DictionaryEntry.Name,
+                    Value = file.Dataset.GetString(x.Tag),
+                    Group = x.Tag.Group,
+                    Element = x.Tag.Element
+                })
+                .OrderBy(i => i.Group)
+                .ThenBy(i => i.Name)
+                .ToList();
 
-            return dicomFileInfo;
-        }
-
-        /// <summary>
-        /// Return metadata node if it is only a Metadata node. Otherwise recursively get the information
-        /// </summary>
-        /// <param name="node">Metadata node.</param>
-        private DicomDataElementMetadata GetMetadataNodeInfo(MetadataNode node)
-        {
-            // if node is DicomDataElementMetadata
-            if (node is DicomDataElementMetadata dataElementMetadata)
-            {
-                return dataElementMetadata;
-            }
-
-            // show children info
-            foreach (var children in node)
-                GetMetadataNodeInfo(children);
-
-            throw new Exception("Node is not DicomDataElementMetadata");
-        }
-        */
+            return tags;
+        }        
     }
 }
