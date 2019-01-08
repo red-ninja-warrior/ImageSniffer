@@ -1,8 +1,6 @@
-﻿using Dicom;
-
-namespace DicomFileViewer
+﻿namespace Sniffer.Dicom
 {
-    public class DicomTag
+    public class ImageTag
     {
         public string Tag { get; internal set; }
         public ushort Group { get; internal set; }

@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7A1FC625-CA4D-43FC-937B-7F5AA11CFDF3}</ProjectGuid>
+    <ProjectGuid>{35C090FA-CFE4-4A78-ACC5-0F63E4ED207A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DicomFileViewer</RootNamespace>
-    <AssemblyName>DicomFileViewer</AssemblyName>
+    <RootNamespace>Sniffer.Viewer</RootNamespace>
+    <AssemblyName>Sniffer.Viewer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -39,9 +38,12 @@
     <Reference Include="Dicom.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3a13f649e28eb09a, processorArchitecture=MSIL">
       <HintPath>..\packages\fo-dicom.Desktop.4.0.0\lib\net45\Dicom.Core.dll</HintPath>
     </Reference>
+    <Reference Include="HL7-dotnetcore, Version=2.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HL7-dotnetcore.2.10.0\lib\netstandard2.0\HL7-dotnetcore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,12 +58,23 @@
     <Compile Include="DicomViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DicomViewer.Designer.cs">
+    <Compile Include="DicomViewer.designer.cs">
       <DependentUpon>DicomViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HL7Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HL7Viewer.designer.cs">
+      <DependentUpon>HL7Viewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DicomTag.cs" />
+    <EmbeddedResource Include="DicomViewer.resx">
+      <DependentUpon>DicomViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HL7Viewer.resx">
+      <DependentUpon>HL7Viewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -70,11 +83,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="DicomViewer.resx">
-      <DependentUpon>DicomViewer.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -88,6 +97,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sniffer.Dicom\Sniffer.Dicom.csproj">
+      <Project>{D82F697D-8684-42B3-A252-49E9372D630F}</Project>
+      <Name>Sniffer.Dicom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sniffer.HL7\Sniffer.HL7.csproj">
+      <Project>{F973077B-FF12-41DD-A4F8-0B71ABFB9C7D}</Project>
+      <Name>Sniffer.HL7</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\fo-dicom.Desktop.4.0.0\build\net45\fo-dicom.Desktop.targets" Condition="Exists('..\packages\fo-dicom.Desktop.4.0.0\build\net45\fo-dicom.Desktop.targets')" />

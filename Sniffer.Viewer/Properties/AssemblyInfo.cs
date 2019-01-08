@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DicomFileViewer")]
+[assembly: AssemblyTitle("Sniffer.Viewer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("VinSolutions")]
-[assembly: AssemblyProduct("DicomFileViewer")]
-[assembly: AssemblyCopyright("Copyright © VinSolutions 2019")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Sniffer.Viewer")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7a1fc625-ca4d-43fc-937b-7f5aa11cfdf3")]
+[assembly: Guid("35c090fa-cfe4-4a78-acc5-0f63e4ed207a")]
 
 // Version information for an assembly consists of the following four values:
 //

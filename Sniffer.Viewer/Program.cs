@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DicomFileViewer
+namespace Sniffer.Viewer
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace DicomFileViewer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DicomViewer());
+            Application.Run(new HL7Viewer());
         }
     }
 }

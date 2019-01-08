@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HealthLevel7\HealthLevel7.csproj" />
+    <ProjectReference Include="..\Sniffer.HL7\Sniffer.HL7.csproj" />
   </ItemGroup>
 
 </Project>

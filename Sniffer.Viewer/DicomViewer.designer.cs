@@ -1,4 +1,4 @@
-﻿namespace DicomFileViewer
+﻿namespace Sniffer.Viewer
 {
     partial class DicomViewer
     {
