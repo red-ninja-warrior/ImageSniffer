@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Sniffer.HL7.ORM
+namespace Sniffer.HL7.SegmentType
 {
     /// <summary>
     /// MessageHeader Information
@@ -70,6 +71,45 @@ namespace Sniffer.HL7.ORM
             }
                         
             return segment;
+        }
+
+        public static List<Descendent> GetElements(string segmentText)
+        {
+            var dictionary = new List<Descendent>();
+            var segment = new MSH();
+            const string messageSegmentType = "MSH";
+
+            if (string.IsNullOrWhiteSpace(segmentText) || segmentText.Substring(0, messageSegmentType.Length) != messageSegmentType)
+            {
+                throw new Exception($"{messageSegmentType}: {segmentText} does not start with {messageSegmentType}");
+            }
+
+            segmentText = segmentText.Substring(messageSegmentType.Length, segmentText.Length - messageSegmentType.Length);
+
+            var fieldSeparator = char.Parse(segmentText.Substring(0, 1));
+            var fields = segmentText.Split(fieldSeparator);
+            if (fields.Any())
+            {
+                fields[0] = fieldSeparator.ToString();
+            }
+
+            var propertyInfo = segment.GetType().GetProperties();
+            for (var i = 0; i < propertyInfo.Length; i++)
+            {
+                var attribute = (RequiredFieldAttribute)propertyInfo[i].GetCustomAttributes(typeof(RequiredFieldAttribute), false).FirstOrDefault();
+
+                if (attribute != null && attribute.Required && string.IsNullOrWhiteSpace(fields[i]))
+                {
+                    throw new Exception($"{messageSegmentType}: {segmentText} does not have mandatory field {propertyInfo[i].Name} at position {i + 1}");
+                }
+
+                if (i < fields.Length)
+                {
+                    dictionary.Add(new Descendent { Field = propertyInfo[i].Name, Value = fields[i] });
+                }
+            }
+
+            return dictionary;
         }
     }
 }

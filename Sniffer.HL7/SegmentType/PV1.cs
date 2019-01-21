@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Sniffer.HL7.ORM
+namespace Sniffer.HL7.SegmentType
 {
     /// <summary>
     /// Patient Visit
@@ -10,7 +11,7 @@ namespace Sniffer.HL7.ORM
     {
         public string SetId { get; set; }
 
-        [RequiredField]
+        //[RequiredField]
         public string PatientClass { get; set; }
         public string AssignedPatientLocation { get; set; }
         public string AdmissionType { get; set; }
@@ -98,6 +99,5 @@ namespace Sniffer.HL7.ORM
 
             return segment;
         }
-
     }
 }

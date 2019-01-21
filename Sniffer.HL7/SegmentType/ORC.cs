@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Sniffer.HL7.ORM
+namespace Sniffer.HL7.SegmentType
 {
     /// <summary>
     /// Common Order
@@ -23,7 +24,7 @@ namespace Sniffer.HL7.ORM
         public string OrderingProvider { get; set; }
         public string EnterersLocation { get; set; }
         public string CallBackPhoneNumber { get; set; }
-        public string OrderEffectiveDateTime { get; set; }
+        public string OrderEffectiveDateTime { get; set; }               
         public string OrderControlCodeReason { get; set; }
         public string EnteringOrganization { get; set; }
         public string EnteringDevice { get; set; }
@@ -76,5 +77,6 @@ namespace Sniffer.HL7.ORM
 
             return segment;
         }
+        
     }
 }

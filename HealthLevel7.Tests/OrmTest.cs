@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sniffer.HL7.ORM;
+using Sniffer.HL7.SegmentType;
 
 namespace HealthLevel7.Tests
 {

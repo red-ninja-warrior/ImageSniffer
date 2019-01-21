@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Sniffer.HL7.ORM
+namespace Sniffer.HL7.SegmentType
 {
     /// <summary>
     /// Patient Identification Row
@@ -75,6 +76,6 @@ namespace Sniffer.HL7.ORM
             }
 
             return segment;
-        }
+        }        
     }    
 }
