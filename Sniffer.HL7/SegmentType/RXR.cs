@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sniffer.HL7.SegmentType
+﻿namespace Sniffer.HL7.SegmentType
 {
     public class RXR
     {

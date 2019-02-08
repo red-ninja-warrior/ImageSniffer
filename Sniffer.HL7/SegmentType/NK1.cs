@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Sniffer.HL7.SegmentType
+﻿namespace Sniffer.HL7.SegmentType
 {
     public class NK1
     {

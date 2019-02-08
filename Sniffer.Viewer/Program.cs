@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sniffer.Viewer
@@ -16,7 +13,7 @@ namespace Sniffer.Viewer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HL7Viewer());
+            Application.Run(new DicomViewer());
         }
     }
 }
