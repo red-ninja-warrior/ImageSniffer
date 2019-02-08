@@ -13,7 +13,7 @@ namespace Sniffer.Viewer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DicomViewer());
+            Application.Run(new Viewer());
         }
     }
 }

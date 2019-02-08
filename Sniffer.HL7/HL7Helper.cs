@@ -53,6 +53,24 @@ namespace Sniffer.HL7
                     case "IN1":
                         segment.Descendents = Common.GetElements<IN1>(m);
                         break;
+                    case "RGS":
+                        segment.Descendents = Common.GetElements<RGS>(m);
+                        break;
+                    case "AIS":
+                        segment.Descendents = Common.GetElements<AIS>(m);
+                        break;
+                    case "NTE":
+                        segment.Descendents = Common.GetElements<NTE>(m);
+                        break;
+                    case "AIG":
+                        segment.Descendents = Common.GetElements<AIG>(m);
+                        break;
+                    case "AIL":
+                        segment.Descendents = Common.GetElements<AIL>(m);
+                        break;
+                    case "AIP":
+                        segment.Descendents = Common.GetElements<AIP>(m);
+                        break;
                     default:
                         break;
 
