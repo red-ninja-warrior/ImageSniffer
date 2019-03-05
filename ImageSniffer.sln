@@ -9,11 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{51185518
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthLevel7.Tests", "HealthLevel7.Tests\HealthLevel7.Tests.csproj", "{1B4918DE-7EEE-4FD1-9753-4D5AFBF8F893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sniffer.Dicom", "Sniffer.Dicom\Sniffer.Dicom.csproj", "{D82F697D-8684-42B3-A252-49E9372D630F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sniffer.Dicom", "Sniffer.Dicom\Sniffer.Dicom.csproj", "{D82F697D-8684-42B3-A252-49E9372D630F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sniffer.Viewer", "Sniffer.Viewer\Sniffer.Viewer.csproj", "{35C090FA-CFE4-4A78-ACC5-0F63E4ED207A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sniffer.HL7", "Sniffer.HL7\Sniffer.HL7.csproj", "{F973077B-FF12-41DD-A4F8-0B71ABFB9C7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sniffer.HL7", "Sniffer.HL7\Sniffer.HL7.csproj", "{F973077B-FF12-41DD-A4F8-0B71ABFB9C7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sniffer.Agent", "Sniffer.Agent\Sniffer.Agent.csproj", "{410F02CB-8832-4993-9EB6-2D0CC685B885}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{F973077B-FF12-41DD-A4F8-0B71ABFB9C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F973077B-FF12-41DD-A4F8-0B71ABFB9C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F973077B-FF12-41DD-A4F8-0B71ABFB9C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{410F02CB-8832-4993-9EB6-2D0CC685B885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{410F02CB-8832-4993-9EB6-2D0CC685B885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{410F02CB-8832-4993-9EB6-2D0CC685B885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{410F02CB-8832-4993-9EB6-2D0CC685B885}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
