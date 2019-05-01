@@ -4,7 +4,10 @@ using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Sniffer.Agent.Models.Enums;
 
 namespace Sniffer.Agent
 {
@@ -12,6 +15,19 @@ namespace Sniffer.Agent
     {
         public static void Main(string[] args)
         {
+            Enum.TryParse(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"),
+                out EnvironmentEnum environment);
+
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json", false, true)
+                .AddJsonFile($"appsettings.{environment.ToString()}.json", false, true)
+                .Build();
+
+            var svcProvider = new ServiceCollection()
+                // Configuration
+                .AddSingleton<IConfiguration>(s => configuration);
+
             var isService = !(Debugger.IsAttached || args.Contains("--console"));
 
             if (isService)
@@ -35,7 +51,7 @@ namespace Sniffer.Agent
             else
             {
                 host.Run();
-            }
+            }            
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
